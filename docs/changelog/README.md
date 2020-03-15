@@ -1,5 +1,9 @@
 # 离线包Changelog
 
+> sealos v3.1.1
+
+* 增加master,增加node,删除master,删除node更丝滑
+
 > 1.16.3 1.14.9 1.15.6
 
 sealyun:
