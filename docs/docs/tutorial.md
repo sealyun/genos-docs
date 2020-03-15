@@ -48,15 +48,22 @@ sealos init --master 172.16.198.83:2022 \
     --version v1.15.0
 ```
 
-```
---master   master服务器地址列表
---node     node服务器地址列表
---user     服务器ssh用户名
---passwd   服务器ssh用户密码
---pkg-url  离线包位置，可以放在本地目录，也可以放在一个http服务器上，sealos会wget到安装目标机
---version  kubernetes版本
---pk       ssh私钥地址，配置免密钥默认就是/root/.ssh/id_rsa
-```
+参数名|含义|示例
+---|---|---
+passwd|服务器密码|123456
+master|k8s master节点IP地址| 192.168.0.2
+node|k8s node节点IP地址|192.168.0.3
+pkg-url|离线资源包地址，支持下载到本地，或者一个远程地址|/root/kube1.16.0.tar.gz
+version|[资源包](http://store.lameleg.com)对应的版本|v1.16.0
+kubeadm-config|自定义kubeadm配置文件|kubeadm.yaml.temp
+pk|ssh私钥地址，免密钥时使用|/root/.ssh/id_rsa
+user|ssh用户名|root
+interface|机器网卡名，CNI网卡发现用|eth.*
+network|CNI类型如calico flannel| calico
+podcidr|pod网段|100.64.0.0/10
+repo|镜像仓库,离线包通常不用配置,除非你把镜像导入到自己私有仓库了|k8s.gcr.io
+svccidr|clusterip网段|10.96.0.0/22
+without-cni|不装cni插件，为了用户自己装别的CNI|
 
 其它参数:
 ```
