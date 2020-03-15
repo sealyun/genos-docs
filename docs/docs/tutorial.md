@@ -48,28 +48,22 @@ sealos init --master 172.16.198.83:2022 \
     --version v1.15.0
 ```
 
-参数名|含义|示例
----|---|---
-passwd|服务器密码|123456
-master|k8s master节点IP地址| 192.168.0.2
-node|k8s node节点IP地址|192.168.0.3
-pkg-url|离线资源包地址，支持下载到本地，或者一个远程地址|/root/kube1.16.0.tar.gz
-version|[资源包](http://store.lameleg.com)对应的版本|v1.16.0
-kubeadm-config|自定义kubeadm配置文件|kubeadm.yaml.temp
-pk|ssh私钥地址，免密钥时使用|/root/.ssh/id_rsa
-user|ssh用户名|root
-interface|机器网卡名，CNI网卡发现用|eth.*
-network|CNI类型如calico flannel| calico
-podcidr|pod网段|100.64.0.0/10
-repo|镜像仓库,离线包通常不用配置,除非你把镜像导入到自己私有仓库了|k8s.gcr.io
-svccidr|clusterip网段|10.96.0.0/22
-without-cni|不装cni插件，为了用户自己装别的CNI|
-
-其它参数:
-```
- --kubeadm-config string   kubeadm-config.yaml kubeadm配置文件，可自定义kubeadm配置文件
- --vip string              virtual ip (default "10.103.97.2") 本地负载时虚拟ip，不推荐修改，集群外不可访问
-```
+参数名|含义|示例|是否必须
+---|---|---|---
+passwd|服务器密码|123456|和私钥二选一
+master|k8s master节点IP地址| 192.168.0.2|必须
+node|k8s node节点IP地址|192.168.0.3|可选
+pkg-url|离线资源包地址，支持下载到本地，或者一个远程地址|/root/kube1.16.0.tar.gz|必须
+version|[资源包](http://store.lameleg.com)对应的版本|v1.16.0|必须
+kubeadm-config|自定义kubeadm配置文件|kubeadm.yaml.temp|可选
+pk|ssh私钥地址，免密钥时使用|/root/.ssh/id_rsa|和passwd二选一
+user|ssh用户名|root|可选
+interface|机器网卡名，CNI网卡发现用|eth.*|可选
+network|CNI类型如calico flannel| calico|可选
+podcidr|pod网段|100.64.0.0/10|可选
+repo|镜像仓库,离线包通常不用配置,除非你把镜像导入到自己私有仓库了|k8s.gcr.io|可选
+svccidr|clusterip网段|10.96.0.0/22|可选
+without-cni|不装cni插件，为了用户自己装别的CNI||可选
 
 检查安装是否正常:
 ```sh
