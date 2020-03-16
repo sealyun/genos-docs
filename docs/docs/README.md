@@ -20,13 +20,17 @@ node0|192.168.0.5
 wget https://github.com/fanux/sealos/releases/download/v3.0.1/sealos && \
     chmod +x sealos && mv sealos /usr/bin 
 
+# 下载离线资源包
+wget https://sealyun.oss-cn-beijing.aliyuncs.com/413bd3624b2fb9e466601594b4f72072-1.17.0/kube1.17.0.tar.gz 
+
 # 安装一个三master的kubernetes集群
 sealos init --passwd 123456 \
 	--master 192.168.0.2  --master 192.168.0.3  --master 192.168.0.4  \
 	--node 192.168.0.5 \
-	--pkg-url https://sealyun.oss-cn-beijing.aliyuncs.com/413bd3624b2fb9e466601594b4f72072-1.17.0/kube1.17.0.tar.gz \
+	--pkg-url /root/kube1.17.0.tar.gz \
 	--version v1.17.0
 ```
+
 > 参数含义
 
 参数名|含义|示例
