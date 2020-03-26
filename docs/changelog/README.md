@@ -1,5 +1,9 @@
 # 离线包Changelog
 
+> 1.18.0
+
+此版本为测试版本，证书时间为一年，必须配合v3.2.0以上版本进行使用。
+
 > sealos v3.1.1
 
 * 增加master,增加node,删除master,删除node更丝滑
