@@ -33,11 +33,13 @@ node0|192.168.0.5
 
 ::: tip kubernetes高可用安装教程
 只需要准备好服务器，在任意一台服务器上执行下面命令即可
+
+如果github下载太慢可前往oss下载，下载地址在[release页面](https://github.com/fanux/sealos/releases)中
 :::
 
 ```sh
 # 下载并安装sealos, sealos是个golang的二进制工具，直接下载拷贝到bin目录即可
-wget https://github.com/fanux/sealos/releases/download/v3.1.1/sealos && \
+wget https://github.com/fanux/sealos/releases/download/v3.2.0/sealos && \
     chmod +x sealos && mv sealos /usr/bin 
 
 # 下载离线资源包
@@ -50,6 +52,7 @@ sealos init --passwd 123456 \
 	--pkg-url /root/kube1.17.0.tar.gz \
 	--version v1.17.0
 ```
+
 > 参数含义
 
 参数名|含义|示例
