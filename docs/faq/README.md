@@ -1,3 +1,9 @@
+# calico manager起不来
+
+报 no route to host
+
+解决办法： iptables -F 重装
+
 # vagrant中多网卡部署不了join时卡住
 是因为默认路由不对，[详细请查看](https://github.com/fanux/sealos/issues/134#issuecomment-564454526)
 
