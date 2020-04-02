@@ -21,14 +21,14 @@ wget https://github.com/fanux/sealos/releases/download/v3.2.0/sealos && \
     chmod +x sealos && mv sealos /usr/bin 
 
 # 下载离线资源包
-wget https://sealyun.oss-cn-beijing.aliyuncs.com/413bd3624b2fb9e466601594b4f72072-1.17.0/kube1.17.0.tar.gz 
+wget https://sealyun.oss-cn-beijing.aliyuncs.com/d551b0b9e67e0416d0f9dce870a16665-1.18.0/kube1.18.0.tar.gz 
 
 # 安装一个三master的kubernetes集群
 sealos init --passwd 123456 \
 	--master 192.168.0.2  --master 192.168.0.3  --master 192.168.0.4  \
 	--node 192.168.0.5 \
-	--pkg-url /root/kube1.17.0.tar.gz \
-	--version v1.17.0
+	--pkg-url /root/kube1.18.0.tar.gz \
+	--version v1.18.0
 ```
 
 > 参数含义
