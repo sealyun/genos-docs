@@ -7,10 +7,13 @@ sealos旨在做一个简单干净轻量级稳定的kubernetes安装工具，能�
 sealos特性与优势：
 
 * 支持离线安装，工具与资源包（二进制程序 配置文件 镜像 yaml文件等）分离,这样不同版本替换不同离线包即可
-* 证书延期
+* 百年证书
 * 使用简单
 * 支持自定义配置
 * 内核负载，极其稳定，因为简单所以排查问题也极其简单
+* 不依赖ansible haproxy keepalived, 一个二进制工具，0依赖
+* 资源包放在阿里云oss上，再也不用担心网速
+* dashboard ingress prometheus等APP 同样离线打包，一键安装
 
 > 为什么不使用ansilbe
 
@@ -43,12 +46,3 @@ haproxy用static pod跑没有太大问题还算好管理，keepalived现在大�
 实现上有个问题会让使用envoy等变得非常尴尬，就是join时如果负载均衡没有建立那是会卡住的，kubelet就不会起，所以为此你需要先把envory起起来，意味着你又不能用static pod去管理它，同上面keepalived宿主机部署一样的问题，用static pod就会相互依赖，逻辑死锁，鸡说要先有蛋，蛋说要先有鸡，最后谁都没有。
 
 使用ipvs就不一样，我可以在join之前先把ipvs规则建立好，再去join就可以join进去了，然后对规则进行守护即可。一旦apiserver不可访问了，会自动清理掉所有node上对应的ipvs规则， master恢复正常时添加回来。
-
-> 为什么要定制kubeadm
-
-   首先是由于kubeadm把证书时间写死了，所以需要定制把它改成99年，虽然大部分人可以自己去签个新证书，但是我们还是不想再依赖个别的工具，就直接改源码了。 
-
-   其次就是做本地负载时修改kubeadm代码是最方便的，因为在join时我们需要做两个事，第一join之前先创建好ipvs规则，第二创建static pod，如果这块不去定制kubeadm就把报静态pod目录已存在的错误，忽略这个错误很不优雅。 而且kubeadm中已经提供了一些很好用的sdk供我们去实现这个功能。
-
-   且这样做之后最核心的功能都集成到kubeadm中了，sealos就单单变成分发和执行上层命令的轻量级工具了，增加节点时我们也就可以直接用kubeadm了
-

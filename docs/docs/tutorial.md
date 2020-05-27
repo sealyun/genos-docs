@@ -8,6 +8,8 @@
 * master节点CPU必须2C以上
 * 请使用sealos 3.2.0以上版本
 
+## [视频教程](http://mp.weixin.qq.com/mp/video?__biz=Mzg2NzAzODE5Ng==&mid=100000268&sn=e932ef75dfc38414c21b6b365df07c8e&vid=wxv_1003349861900664832&idx=1&vidsn=e934d4cf8bacd1f569514b69c1344cf6&fromid=1&scene=18&xtrack=1#wechat_redirect)
+
 ## 安装教程
 多master HA:
 ```sh
@@ -65,6 +67,8 @@ repo|镜像仓库,离线包通常不用配置,除非你把镜像导入到自己�
 svccidr|clusterip网段|10.96.0.0/22|可选
 without-cni|不装cni插件，为了用户自己装别的CNI||可选
 
+具体详细参数执行 sealos init --help
+
 检查安装是否正常:
 ```sh
 [root@iZj6cdqfqw4o4o9tc0q44rZ ~]# kubectl get node
@@ -103,10 +107,8 @@ kube-system   kube-sealyun-lvscare-izj6cdqfqw4o4o9tc0q44uz      1/1     Running 
 
 ## 清理
 ```sh
-sealos clean 
+sealos clean all
 ```
-## [视频教程](http://mp.weixin.qq.com/mp/video?__biz=Mzg2NzAzODE5Ng==&mid=100000268&sn=e932ef75dfc38414c21b6b365df07c8e&vid=wxv_1003349861900664832&idx=1&vidsn=e934d4cf8bacd1f569514b69c1344cf6&fromid=1&scene=18&xtrack=1#wechat_redirect)
-
 ## 增加master
 
 ```shell script
